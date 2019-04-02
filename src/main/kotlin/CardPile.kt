@@ -1,3 +1,4 @@
+import Card.*
 import Suit.Spade
 
 class CardPile {

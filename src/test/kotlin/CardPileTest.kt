@@ -1,13 +1,13 @@
 import Suit.Spade
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.Before
+import org.junit.Test
 
 internal class CardPileTest {
     private var cardPile: CardPile? = null
 
-    @BeforeEach
+    @Before
     internal fun setUp() {
         cardPile = CardPile()
     }
