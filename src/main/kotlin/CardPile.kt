@@ -1,10 +1,9 @@
-import Card.*
-import Suit.*
+import Suit.Spade
 
-class CardPile{
+class CardPile {
     val cards: MutableList<Card> = ArrayList()
 
-    init{
+    init {
         cards.add(Ace(Spade))
         cards.add(Two(Spade))
         cards.add(Three(Spade))

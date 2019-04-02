@@ -6,7 +6,7 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 internal class PlayerTest {
-    private var player:Player? = null
+    private var player: Player? = null
 
     @Before
     internal fun setUp() {
@@ -21,12 +21,12 @@ internal class PlayerTest {
 
 
     @Test
-    internal fun playerShouldStartNewRoundWithTwoCards(){
+    internal fun playerShouldStartNewRoundWithTwoCards() {
         assertThat(player!!.cards.size, equalTo(2))
     }
 
     @Test
-    internal fun shouldDrawCardsFromPileForStartingHand(){
+    internal fun shouldDrawCardsFromPileForStartingHand() {
         verify(player!!.drawPile).drawStartingHand()
     }
 }

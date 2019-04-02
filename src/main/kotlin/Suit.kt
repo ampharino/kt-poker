@@ -1,4 +1,4 @@
-enum class Suit{
+enum class Suit {
     Club,
     Heart,
     Spade,

@@ -1,8 +1,6 @@
-import Suit.*
+import Suit.Spade
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.junit.Before
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -22,7 +20,7 @@ internal class CardPileTest {
 
     @Test
     internal fun shouldHave13SpadeCards() {
-        val spadeCards = cardPile!!.cards.filter { card -> card.suit == Spade}
+        val spadeCards = cardPile!!.cards.filter { card -> card.suit == Spade }
         assertThat(spadeCards.size, equalTo(13))
     }
 

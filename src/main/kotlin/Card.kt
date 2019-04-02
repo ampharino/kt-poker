@@ -1,6 +1,7 @@
 interface Card {
     val suit: Suit
 }
+
 data class Ace(override val suit: Suit) : Card
 data class Two(override val suit: Suit) : Card
 data class Three(override val suit: Suit) : Card
