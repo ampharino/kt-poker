@@ -62,7 +62,7 @@ internal class HandEvaluatorTest {
         assertThat(handValue, equalTo(JACK_VALUE + Flush.value))
     }
 
-    private fun flushHand(): List<Card>{
+    private fun flushHand(): List<Card> {
         return listOf(Four(Spade), Jack(Spade), Eight(Spade), Two(Spade), Nine(Spade))
     }
 
