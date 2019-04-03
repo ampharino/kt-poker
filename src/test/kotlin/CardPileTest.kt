@@ -1,3 +1,4 @@
+import Suit.Heart
 import Suit.Spade
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
@@ -21,6 +22,12 @@ internal class CardPileTest {
     @Test
     internal fun shouldHave13SpadeCards() {
         val spadeCards = cardPile!!.cards.filter { card -> card.suit == Spade }
+        assertThat(spadeCards.size, equalTo(13))
+    }
+
+    @Test
+    fun shouldHave13HeartCards() {
+        val spadeCards = cardPile!!.cards.filter { card -> card.suit == Heart }
         assertThat(spadeCards.size, equalTo(13))
     }
 

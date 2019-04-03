@@ -1,23 +1,14 @@
 import Card.*
-import Suit.Spade
 
 class CardPile {
     val cards: MutableList<Card> = ArrayList()
 
     init {
-        cards.add(Ace(Spade))
-        cards.add(Two(Spade))
-        cards.add(Three(Spade))
-        cards.add(Four(Spade))
-        cards.add(Five(Spade))
-        cards.add(Six(Spade))
-        cards.add(Seven(Spade))
-        cards.add(Eight(Spade))
-        cards.add(Nine(Spade))
-        cards.add(Ten(Spade))
-        cards.add(Jack(Spade))
-        cards.add(Queen(Spade))
-        cards.add(King(Spade))
+        initializeSuit(Suit.Spade)
+        initializeSuit(Suit.Heart)
+        initializeSuit(Suit.Club)
+        initializeSuit(Suit.Diamond)
+
     }
 
     fun drawStartingHand() {
@@ -25,6 +16,22 @@ class CardPile {
 
     fun size(): Int {
         return 52
+    }
+
+    private fun initializeSuit(suit: Suit) {
+        cards.add(Ace(suit))
+        cards.add(Two(suit))
+        cards.add(Three(suit))
+        cards.add(Four(suit))
+        cards.add(Five(suit))
+        cards.add(Six(suit))
+        cards.add(Seven(suit))
+        cards.add(Eight(suit))
+        cards.add(Nine(suit))
+        cards.add(Ten(suit))
+        cards.add(Jack(suit))
+        cards.add(Queen(suit))
+        cards.add(King(suit))
     }
 
 }
