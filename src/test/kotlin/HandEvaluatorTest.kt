@@ -9,6 +9,8 @@ private val JACK_VALUE = 10
 private val ACE_VALUE = 13
 private val FOUR_VALUE = 3
 private val SEVEN_VALUE = 6
+private val NINE_VALUE = 8
+private val FIVE_VALUE = 4
 
 internal class HandEvaluatorTest {
     @Test
@@ -33,6 +35,37 @@ internal class HandEvaluatorTest {
     fun shouldReturnValueOfTripletAddedToValueOfThreeOfAKindHand() {
         val handValue = HandEvaluator.evaluateThreeOfAKind(threeOfAKindHand())
         assertThat(handValue, equalTo(SEVEN_VALUE + ThreeOfAKind.value))
+    }
+
+    @Test
+    fun shouldReturnValueOfTopCardInStraightAddedToValueOfStraightHand() {
+        val handValue = HandEvaluator.evaluateStraight(straightHand())
+        assertThat(handValue, equalTo(NINE_VALUE + Straight.value))
+    }
+
+    @Test
+    fun shouldReturnValueOfFiveInStraightAddedToValueOfStraighHandWhenLowStraight() {
+        val handValue = HandEvaluator.evaluateStraight(lowStraightHand())
+        assertThat(handValue, equalTo(FIVE_VALUE + Straight.value))
+
+    }
+
+    @Test
+    fun shouldReturnValueOfAceInStraightAddedToValueOfStraightHandWhenHighStraight() {
+        val handValue = HandEvaluator.evaluateStraight(highStraightHand())
+        assertThat(handValue, equalTo(ACE_VALUE + Straight.value))
+    }
+
+    private fun straightHand(): List<Card> {
+        return listOf(Nine(Club), Eight(Diamond), Seven(Spade), Six(Diamond), Five(Heart))
+    }
+
+    private fun lowStraightHand(): List<Card> {
+        return listOf(Five(Club), Four(Diamond), Three(Spade), Two(Diamond), Ace(Heart))
+    }
+
+    private fun highStraightHand(): List<Card> {
+        return listOf(Ace(Club), King(Diamond), Queen(Spade), Jack(Diamond), Ten(Heart))
     }
 
     private fun threeOfAKindHand(): List<Card> {

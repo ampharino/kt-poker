@@ -34,4 +34,10 @@ object HandEvaluator {
 
         return tripleRank!! + ThreeOfAKind.value
     }
+
+    fun evaluateStraight(straightHand: List<Card>): Int {
+        val topCard = straightHand.maxBy { card -> card.value }
+        val topCardValue =  if(topCard is Card.Ace && straightHand.any { card -> card is Card.Five }) 4 else topCard!!.value
+        return topCardValue + Straight.value
+    }
 }
