@@ -1,5 +1,4 @@
-import Card.King
-import Card.Queen
+import Card.*
 import Suit.Spade
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
