@@ -40,4 +40,8 @@ object HandEvaluator {
         val topCardValue =  if(topCard is Card.Ace && straightHand.any { card -> card is Card.Five }) 4 else topCard!!.value
         return topCardValue + Straight.value
     }
+
+    fun evaluateFlush(flushHand: List<Card>): Int {
+        return evaluateHighestCard(flushHand) + Flush.value
+    }
 }

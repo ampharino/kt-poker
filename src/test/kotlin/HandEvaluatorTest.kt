@@ -56,6 +56,16 @@ internal class HandEvaluatorTest {
         assertThat(handValue, equalTo(ACE_VALUE + Straight.value))
     }
 
+    @Test
+    fun shouldReturnHighestRankCardAddedToValueOfFlushHand() {
+        val handValue = HandEvaluator.evaluateFlush(flushHand())
+        assertThat(handValue, equalTo(JACK_VALUE + Flush.value))
+    }
+
+    private fun flushHand(): List<Card>{
+        return listOf(Four(Spade), Jack(Spade), Eight(Spade), Two(Spade), Nine(Spade))
+    }
+
     private fun straightHand(): List<Card> {
         return listOf(Nine(Club), Eight(Diamond), Seven(Spade), Six(Diamond), Five(Heart))
     }
