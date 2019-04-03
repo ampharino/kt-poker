@@ -33,6 +33,8 @@ internal class CardPileTest {
 
     @Test
     internal fun drawStartingHandShouldRemoveAndReturnTwoCards() {
-
+        val startingCards = cardPile!!.drawStartingHand()
+        assertThat(startingCards.size, equalTo(2))
+        assertThat(cardPile!!.size(), equalTo(50))
     }
 }

@@ -11,11 +11,12 @@ class CardPile {
 
     }
 
-    fun drawStartingHand() {
+    fun drawStartingHand(): List<Card> {
+        return cards.removeRandomItems(2)
     }
 
     fun size(): Int {
-        return 52
+        return cards.size
     }
 
     private fun initializeSuit(suit: Suit) {
@@ -34,4 +35,14 @@ class CardPile {
         cards.add(King(suit))
     }
 
+}
+
+fun <T> MutableList<T>.removeRandomItems(count: Int): List<T> {
+    val returnList: MutableList<T> = ArrayList()
+    for (i in 1..count) {
+        val item = this.random()
+        this.remove(item)
+        returnList.add(item)
+    }
+    return returnList
 }
