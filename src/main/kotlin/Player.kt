@@ -10,10 +10,8 @@ class Player(val name: String, val drawPile: CardPile) {
         getStartingHand()
     }
 
-    fun getStartingHand() {
-        cards.add(King(Club))
-        cards.add(Queen(Diamond))
-        drawPile.drawStartingHand()
+    private fun getStartingHand() {
+        cards.addAll(drawPile.drawStartingHand())
     }
 
 }

@@ -1,9 +1,11 @@
+import Card.King
+import Card.Queen
+import Suit.Spade
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 
 internal class PlayerTest {
     private var player: Player? = null
@@ -11,6 +13,7 @@ internal class PlayerTest {
     @Before
     internal fun setUp() {
         val cardPile = mock(CardPile::class.java)
+        `when`(cardPile.drawStartingHand()).thenReturn(listOf(King(Spade), Queen(Spade)))
         player = Player(name = "John", drawPile = cardPile)
     }
 
