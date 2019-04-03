@@ -5,8 +5,9 @@ import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.junit.Test
 
-private val JACK_VALUE = 11
-private val ACE_VALUE = 1
+private val JACK_VALUE = 10
+private val ACE_VALUE = 13
+private val FOUR_VALUE = 3
 
 internal class HandEvaluatorTest {
     @Test
@@ -16,9 +17,15 @@ internal class HandEvaluatorTest {
     }
 
     @Test
-    fun shouldReturnValueOfCardInPairAddedToValueOfPair() {
+    fun shouldReturnValueOfCardInPairAddedToValueOfPairHand() {
         val handValue = HandEvaluator.evaluatePair(pairHand())
         assertThat(handValue, equalTo(Pair.value + ACE_VALUE))
+    }
+
+    @Test
+    fun shouldReturnHighestRankPairAddedToValueOfTwoPairHand() {
+        val handValue = HandEvaluator.evaluateTwoPair(twoPairHand())
+        assertThat(handValue, equalTo(TwoPair.value + FOUR_VALUE))
     }
 
     private fun highestCardHand(): List<Card> {
@@ -27,6 +34,10 @@ internal class HandEvaluatorTest {
 
     private fun pairHand(): List<Card> {
         return listOf(Ace(Diamond), Ace(Heart), Eight(Club), Four(Spade), Seven(Heart))
+    }
+
+    private fun twoPairHand(): List<Card>{
+        return listOf(Four(Club), Four(Spade), Three(Club), Three(Diamond), Queen(Spade))
     }
 
 

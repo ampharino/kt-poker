@@ -1,4 +1,4 @@
-import Hand.Pair
+import Hand.*
 
 object HandEvaluator {
     fun evaluateHighestCard(highestCardHand: List<Card>): Int {
@@ -13,5 +13,16 @@ object HandEvaluator {
             .first()
 
         return pairRank + Pair.value
+    }
+
+    fun evaluateTwoPair(twoPairHand: List<Card>): Int? {
+        val highestPairRank = twoPairHand
+            .groupBy { card -> card.value }
+            .filterValues { group -> group.size == 2 }
+            .keys
+            .max()
+
+        return highestPairRank!! + TwoPair.value
+
     }
 }
