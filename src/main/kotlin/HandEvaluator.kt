@@ -87,6 +87,9 @@ object HandEvaluator {
         if (cardTypes.filterValues { group -> group.size == 2 }.size == 2) {
             return TwoPair
         }
+        if(cardTypes.filterValues { group -> group.size == 2 }.size == 1){
+            return Pair
+        }
         return High
     }
 }
