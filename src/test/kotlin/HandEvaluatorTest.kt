@@ -5,14 +5,14 @@ import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.junit.Test
 
-private val JACK_VALUE = 10
-private val ACE_VALUE = 13
-private val FOUR_VALUE = 3
-private val SEVEN_VALUE = 6
-private val NINE_VALUE = 8
-private val FIVE_VALUE = 4
-private val TEN_VALUE = 9
-private val EIGHT_VALUE = 7
+private const val JACK_VALUE = 10
+private const val ACE_VALUE = 13
+private const val FOUR_VALUE = 3
+private const val SEVEN_VALUE = 6
+private const val NINE_VALUE = 8
+private const val FIVE_VALUE = 4
+private const val TEN_VALUE = 9
+private const val EIGHT_VALUE = 7
 
 internal class HandEvaluatorTest {
     @Test
@@ -71,7 +71,7 @@ internal class HandEvaluatorTest {
     }
 
     @Test
-    fun shouldReturnRankOfQuartetAddedToValueOfFourOfAKindHand(){
+    fun shouldReturnRankOfQuartetAddedToValueOfFourOfAKindHand() {
         val handValue = HandEvaluator.evaluateFourOfAKind(fourOfAKindHand())
         assertThat(handValue, equalTo(JACK_VALUE + FourOfAKind.value))
     }
@@ -80,6 +80,17 @@ internal class HandEvaluatorTest {
     fun shouldReturnRankOfTopCardAddedToValueOfStraightFlushHand() {
         val handValue = HandEvaluator.evaluateStraightFlush(straightFlushHand())
         assertThat(handValue, equalTo(EIGHT_VALUE + StraightFlush.value))
+    }
+
+    @Test
+    fun shouldReturnValueOfRoyalFlushHandPlusOne() {
+        val handValue = HandEvaluator.evaluateRoyalFlush()
+        assertThat(handValue, equalTo(RoyalFlush.value + 1))
+    }
+
+    private fun royalFlushHand(): List<Card> {
+        return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))
+
     }
 
     private fun straightFlushHand(): List<Card> {

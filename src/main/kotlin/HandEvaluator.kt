@@ -74,6 +74,10 @@ object HandEvaluator {
         return topCardValue + StraightFlush.value
     }
 
+    fun evaluateRoyalFlush(): Int? {
+        return RoyalFlush.value + 1
+
+    }
 
 
 }
