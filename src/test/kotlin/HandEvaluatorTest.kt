@@ -69,6 +69,17 @@ internal class HandEvaluatorTest {
         assertThat(handValue, equalTo(TEN_VALUE + FullHouse.value))
     }
 
+    @Test
+    fun shouldReturnRankOfQuartetAddedToValueOfFourOfAKindHand(){
+        val handValue = HandEvaluator.evaluateFourOfAKind(fourOfAKindHand())
+        assertThat(handValue, equalTo(JACK_VALUE + FourOfAKind.value))
+    }
+
+    private fun fourOfAKindHand(): List<Card> {
+        return listOf(Jack(Heart), Jack(Spade), Jack(Club), Jack(Diamond), Seven(Diamond))
+
+    }
+
     private fun fullHouseHand(): List<Card> {
         return listOf(Ten(Heart), Ten(Diamond), Ten(Spade), Nine(Club), Nine(Diamond))
 

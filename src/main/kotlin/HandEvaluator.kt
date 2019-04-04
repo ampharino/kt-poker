@@ -54,7 +54,18 @@ object HandEvaluator {
             .max()
 
         return tripleRank!! + FullHouse.value
+    }
 
+    fun evaluateFourOfAKind(fourOfAKindHand: List<Card>): Int? {
+        val quartetRank = fourOfAKindHand
+            .groupBy { card -> card.value }
+            .filterValues { group -> group.size == 4 }
+            .keys
+            .max()
+
+        return quartetRank!! + FourOfAKind.value
 
     }
+
+
 }
