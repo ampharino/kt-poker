@@ -12,6 +12,7 @@ private val SEVEN_VALUE = 6
 private val NINE_VALUE = 8
 private val FIVE_VALUE = 4
 private val TEN_VALUE = 9
+private val EIGHT_VALUE = 7
 
 internal class HandEvaluatorTest {
     @Test
@@ -73,6 +74,17 @@ internal class HandEvaluatorTest {
     fun shouldReturnRankOfQuartetAddedToValueOfFourOfAKindHand(){
         val handValue = HandEvaluator.evaluateFourOfAKind(fourOfAKindHand())
         assertThat(handValue, equalTo(JACK_VALUE + FourOfAKind.value))
+    }
+
+    @Test
+    fun shouldReturnRankOfTopCardAddedToValueOfStraightFlushHand() {
+        val handValue = HandEvaluator.evaluateStraightFlush(straightFlushHand())
+        assertThat(handValue, equalTo(EIGHT_VALUE + StraightFlush.value))
+    }
+
+    private fun straightFlushHand(): List<Card> {
+        return listOf(Eight(Club), Seven(Club), Six(Club), Five(Club), Four(Club))
+
     }
 
     private fun fourOfAKindHand(): List<Card> {

@@ -67,5 +67,13 @@ object HandEvaluator {
 
     }
 
+    fun evaluateStraightFlush(straightFlushHand: List<Card>): Int? {
+        val topCard = straightFlushHand.maxBy { card -> card.value }
+        val topCardValue =
+            if (topCard is Card.Ace && straightFlushHand.any { card -> card is Card.Five }) 4 else topCard!!.value
+        return topCardValue + StraightFlush.value
+    }
+
+
 
 }
