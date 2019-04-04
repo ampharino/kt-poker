@@ -1,3 +1,4 @@
+import Card.*
 import Hand.*
 
 object HandEvaluator {
@@ -53,14 +54,24 @@ object HandEvaluator {
     }
 
     fun determineHand(hand: List<Card>): Hand {
-        return RoyalFlush
+        val cardTypes = hand.groupBy { card -> card::class }
+        val cardSuit = hand.map { card -> card.suit }.toSet()
+        if (cardTypes.contains(Ace::class)
+            && cardTypes.contains(King::class)
+            && cardTypes.contains(Queen::class)
+            && cardTypes.contains(Jack::class)
+            && cardTypes.contains(Ten::class))
+        {
+            return RoyalFlush
+        }
+            return StraightFlush
     }
 }
 
 private fun getRankOfTopCard(hand: List<Card>): Int {
     val topCard = hand.maxBy { card -> card.value }
     val topCardValue =
-        if (topCard is Card.Ace && hand.any { card -> card is Card.Five }) 4 else topCard!!.value
+        if (topCard is Ace && hand.any { card -> card is Five }) 4 else topCard!!.value
     return topCardValue
 }
 
