@@ -55,7 +55,6 @@ object HandEvaluator {
 
     fun determineHand(hand: List<Card>): Hand {
         val cardTypes = hand.groupBy { card -> card::class }
-        val cardSuit = hand.map { card -> card.suit }.toSet()
         if (cardTypes.contains(Ace::class)
             && cardTypes.contains(King::class)
             && cardTypes.contains(Queen::class)
@@ -64,7 +63,10 @@ object HandEvaluator {
         {
             return RoyalFlush
         }
-            return StraightFlush
+        if (cardTypes.filterValues { group -> group.size == 4 }.size == 1){
+            return FourOfAKind
+        }
+        return StraightFlush
     }
 }
 

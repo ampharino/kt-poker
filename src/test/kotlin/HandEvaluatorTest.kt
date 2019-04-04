@@ -98,9 +98,19 @@ internal class HandEvaluatorTest {
     @Test
     fun shouldReturnStraightFlushEnumWhenHandIsStraightFlush(){
         val hand = straightFlushHand()
-        val determinedHand:Hand = HandEvaluator.determineHand(hand)
+        val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(StraightFlush))
     }
+
+    @Test
+    fun shouldReturnFourOfAKindEnumWhenHandIsFourOfAKind(){
+        val hand = fourOfAKindHand()
+        val determinedHand = HandEvaluator.determineHand(hand)
+        assertThat(determinedHand, equalTo(FourOfAKind))
+
+    }
+
+
 
     private fun royalFlushHand(): List<Card> {
         return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))
