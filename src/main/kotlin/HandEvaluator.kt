@@ -60,6 +60,7 @@ object HandEvaluator {
             && cardTypes.contains(Queen::class)
             && cardTypes.contains(Jack::class)
             && cardTypes.contains(Ten::class)
+            && hand.map{card -> card.suit }.toSet().size == 1
         ) {
             return RoyalFlush
         }
@@ -76,6 +77,9 @@ object HandEvaluator {
         }
         if(hand.map{card -> card.suit }.toSet().size == 1){
             return Flush
+        }
+        if(isSequence(hand)){
+            return Straight
         }
         return High
     }
