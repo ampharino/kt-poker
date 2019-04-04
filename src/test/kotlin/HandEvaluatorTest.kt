@@ -144,6 +144,20 @@ internal class HandEvaluatorTest {
         assertThat(determinedHand, equalTo(Straight))
     }
 
+    @Test
+    fun shouldReturnThreeOfAKindEnumWhenThreeOfAKindHand(){
+        val hand = threeOfAKindHand()
+        val determinedHand = HandEvaluator.determineHand(hand)
+        assertThat(determinedHand, equalTo(ThreeOfAKind))
+    }
+
+    @Test
+    fun shouldReturnTwoPairEnumWhenTwoPairHand(){
+        val hand = twoPairHand()
+        val determinedHand = HandEvaluator.determineHand(hand)
+        assertThat(determinedHand, equalTo(TwoPair))
+    }
+
 
     private fun royalFlushHand(): List<Card> {
         return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))
