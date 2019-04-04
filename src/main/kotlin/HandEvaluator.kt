@@ -45,4 +45,16 @@ object HandEvaluator {
     fun evaluateFlush(flushHand: List<Card>): Int {
         return evaluateHighestCard(flushHand) + Flush.value
     }
+
+    fun evaluateFullHouse(fullHouseHand: List<Card>): Int? {
+        val tripleRank = fullHouseHand
+            .groupBy { card -> card.value }
+            .filterValues { group -> group.size == 3 }
+            .keys
+            .max()
+
+        return tripleRank!! + FullHouse.value
+
+
+    }
 }
