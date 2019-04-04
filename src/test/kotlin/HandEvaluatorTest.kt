@@ -165,6 +165,13 @@ internal class HandEvaluatorTest {
         assertThat(determinedHand, equalTo(Pair))
     }
 
+    @Test
+    fun shouldReturnHighEnumWhenNotAnyOtherHand(){
+        val hand = highestCardHand()
+        val determinedHand = HandEvaluator.determineHand(hand)
+        assertThat(determinedHand, equalTo(High))
+    }
+
 
     private fun royalFlushHand(): List<Card> {
         return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))
