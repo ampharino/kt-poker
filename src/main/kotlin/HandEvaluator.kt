@@ -6,39 +6,23 @@ object HandEvaluator {
     }
 
     fun evaluatePair(pairHand: List<Card>): Int {
-        val pairRank = pairHand
-            .groupBy { card -> card.value }
-            .filterValues { group -> group.size == 2 }
-            .keys
-            .first()
-
-        return pairRank + Pair.value
+        val pairRank = getHighestRankFromGroupOfCards(pairHand, 2)
+        return pairRank!! + Pair.value
     }
 
-    fun evaluateTwoPair(twoPairHand: List<Card>): Int {
-        val highestPairRank = twoPairHand
-            .groupBy { card -> card.value }
-            .filterValues { group -> group.size == 2 }
-            .keys
-            .max()
 
+    fun evaluateTwoPair(twoPairHand: List<Card>): Int {
+        val highestPairRank = getHighestRankFromGroupOfCards(twoPairHand, 2)
         return highestPairRank!! + TwoPair.value
     }
 
     fun evaluateThreeOfAKind(threeOfAKindHand: List<Card>): Int {
-        val tripleRank = threeOfAKindHand
-            .groupBy { card -> card.value }
-            .filterValues { group -> group.size == 3 }
-            .keys
-            .max()
-
+        val tripleRank = getHighestRankFromGroupOfCards(threeOfAKindHand, 3)
         return tripleRank!! + ThreeOfAKind.value
     }
 
     fun evaluateStraight(straightHand: List<Card>): Int {
-        val topCard = straightHand.maxBy { card -> card.value }
-        val topCardValue =
-            if (topCard is Card.Ace && straightHand.any { card -> card is Card.Five }) 4 else topCard!!.value
+        val topCardValue = getRankOfTopCard(straightHand)
         return topCardValue + Straight.value
     }
 
@@ -47,36 +31,41 @@ object HandEvaluator {
     }
 
     fun evaluateFullHouse(fullHouseHand: List<Card>): Int? {
-        val tripleRank = fullHouseHand
-            .groupBy { card -> card.value }
-            .filterValues { group -> group.size == 3 }
-            .keys
-            .max()
-
+        val tripleRank = getHighestRankFromGroupOfCards(fullHouseHand, 3)
         return tripleRank!! + FullHouse.value
     }
 
     fun evaluateFourOfAKind(fourOfAKindHand: List<Card>): Int? {
-        val quartetRank = fourOfAKindHand
-            .groupBy { card -> card.value }
-            .filterValues { group -> group.size == 4 }
-            .keys
-            .max()
-
+        val quartetRank = getHighestRankFromGroupOfCards(fourOfAKindHand, 4)
         return quartetRank!! + FourOfAKind.value
 
     }
 
     fun evaluateStraightFlush(straightFlushHand: List<Card>): Int? {
-        val topCard = straightFlushHand.maxBy { card -> card.value }
-        val topCardValue =
-            if (topCard is Card.Ace && straightFlushHand.any { card -> card is Card.Five }) 4 else topCard!!.value
+        val topCardValue = getRankOfTopCard(straightFlushHand)
         return topCardValue + StraightFlush.value
     }
+
+
 
     fun evaluateRoyalFlush(): Int? {
         return RoyalFlush.value + 1
 
+    }
+
+    private fun getRankOfTopCard(hand: List<Card>): Int {
+        val topCard = hand.maxBy { card -> card.value }
+        val topCardValue =
+            if (topCard is Card.Ace && hand.any { card -> card is Card.Five }) 4 else topCard!!.value
+        return topCardValue
+    }
+
+    private fun getHighestRankFromGroupOfCards(cardGroup: List<Card>, groupSize: Int): Int? {
+        return cardGroup
+            .groupBy { card -> card.value }
+            .filterValues { group -> group.size == groupSize }
+            .keys
+            .max()
     }
 
 
