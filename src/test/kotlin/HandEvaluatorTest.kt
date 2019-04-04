@@ -116,6 +116,13 @@ internal class HandEvaluatorTest {
         assertThat(determinedHand, equalTo(FullHouse))
     }
 
+    @Test
+    fun shouldReturnFlushEnumWhenHandIsFlush(){
+        val hand = flushHand()
+        val determinedHand = HandEvaluator.determineHand(hand)
+        assertThat(determinedHand, equalTo(Flush))
+    }
+
 
     private fun royalFlushHand(): List<Card> {
         return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))

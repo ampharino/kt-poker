@@ -63,6 +63,9 @@ object HandEvaluator {
         ) {
             return RoyalFlush
         }
+        if(isSequence(hand) && hand.map{card -> card.suit }.toSet().size == 1){
+            return StraightFlush
+        }
         if (cardTypes.filterValues { group -> group.size == 4 }.size == 1) {
             return FourOfAKind
         }
@@ -71,8 +74,27 @@ object HandEvaluator {
         ) {
             return FullHouse
         }
-        return StraightFlush
+        if(hand.map{card -> card.suit }.toSet().size == 1){
+            return Flush
+        }
+        return High
     }
+}
+
+private fun isSequence(hand:List<Card>): Boolean{
+    val cardSequence = hand.sortedByDescending { card -> card.value }.toMutableList()
+    for (i in 1 until cardSequence.size-1){
+        if (cardSequence[i].value == 13){
+            if(cardSequence[i+1].value != 12 && cardSequence[i+1].value != 4){
+                return false
+            }
+            continue
+        }
+        if(cardSequence[i].value != cardSequence[i+1].value+1){
+            return false
+        }
+    }
+    return true
 }
 
 private fun getRankOfTopCard(hand: List<Card>): Int {
