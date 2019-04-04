@@ -107,9 +107,14 @@ internal class HandEvaluatorTest {
         val hand = fourOfAKindHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(FourOfAKind))
-
     }
 
+    @Test
+    fun shouldReturnFullHouseEnumWhenHandIsFullHouse(){
+        val hand = fullHouseHand()
+        val determinedHand = HandEvaluator.determineHand(hand)
+        assertThat(determinedHand, equalTo(FullHouse))
+    }
 
 
     private fun royalFlushHand(): List<Card> {

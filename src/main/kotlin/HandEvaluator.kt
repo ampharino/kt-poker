@@ -59,12 +59,17 @@ object HandEvaluator {
             && cardTypes.contains(King::class)
             && cardTypes.contains(Queen::class)
             && cardTypes.contains(Jack::class)
-            && cardTypes.contains(Ten::class))
-        {
+            && cardTypes.contains(Ten::class)
+        ) {
             return RoyalFlush
         }
-        if (cardTypes.filterValues { group -> group.size == 4 }.size == 1){
+        if (cardTypes.filterValues { group -> group.size == 4 }.size == 1) {
             return FourOfAKind
+        }
+        if (cardTypes.filterValues { group -> group.size == 3 }.size == 1
+            && cardTypes.filterValues { group -> group.size == 2 }.size == 1
+        ) {
+            return FullHouse
         }
         return StraightFlush
     }
