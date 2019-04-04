@@ -47,26 +47,27 @@ object HandEvaluator {
     }
 
 
-
     fun evaluateRoyalFlush(): Int? {
         return RoyalFlush.value + 1
 
     }
 
-    private fun getRankOfTopCard(hand: List<Card>): Int {
-        val topCard = hand.maxBy { card -> card.value }
-        val topCardValue =
-            if (topCard is Card.Ace && hand.any { card -> card is Card.Five }) 4 else topCard!!.value
-        return topCardValue
+    fun determineHand(hand: List<Card>): Hand {
+        return RoyalFlush
     }
+}
 
-    private fun getHighestRankFromGroupOfCards(cardGroup: List<Card>, groupSize: Int): Int? {
-        return cardGroup
-            .groupBy { card -> card.value }
-            .filterValues { group -> group.size == groupSize }
-            .keys
-            .max()
-    }
+private fun getRankOfTopCard(hand: List<Card>): Int {
+    val topCard = hand.maxBy { card -> card.value }
+    val topCardValue =
+        if (topCard is Card.Ace && hand.any { card -> card is Card.Five }) 4 else topCard!!.value
+    return topCardValue
+}
 
-
+private fun getHighestRankFromGroupOfCards(cardGroup: List<Card>, groupSize: Int): Int? {
+    return cardGroup
+        .groupBy { card -> card.value }
+        .filterValues { group -> group.size == groupSize }
+        .keys
+        .max()
 }
