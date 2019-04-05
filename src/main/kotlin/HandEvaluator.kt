@@ -92,6 +92,22 @@ object HandEvaluator {
         }
         return High
     }
+
+    fun getValueOfHand(hand: List<Card>): Int? {
+        val handType = determineHand(hand)
+        return when(handType){
+            RoyalFlush -> evaluateRoyalFlush()
+            StraightFlush -> evaluateStraightFlush(hand)
+            FourOfAKind -> evaluateFourOfAKind(hand)
+            FullHouse -> evaluateFullHouse(hand)
+            Flush -> evaluateFlush(hand)
+            Straight -> evaluateStraight(hand)
+            ThreeOfAKind -> evaluateThreeOfAKind(hand)
+            TwoPair -> evaluateTwoPair(hand)
+            Pair -> evaluatePair(hand)
+            else -> evaluateHighestCard(hand)
+        }
+    }
 }
 
 private fun isSequence(hand: List<Card>): Boolean {

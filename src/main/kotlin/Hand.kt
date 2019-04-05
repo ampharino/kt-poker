@@ -9,5 +9,22 @@ enum class Hand(val value: Int) {
     FourOfAKind(13 * 7),
     StraightFlush(13 * 8),
     RoyalFlush(13 * 9);
+}
 
+fun List<Card>.generatePermutations(
+    remainingCards: MutableList<Card> = this.toMutableList(),
+    result: List<Card>,
+    size: Int
+): Set<Set<Card>> {
+    if (result.size == size) {
+        return setOf(result.toSet())
+    }
+    val permutations: MutableSet<Set<Card>> = mutableSetOf()
+    for (card in remainingCards) {
+        val newResult = result + card
+        val newRemainingCards = remainingCards.toMutableList()
+        newRemainingCards.remove(card)
+        permutations += generatePermutations(newRemainingCards, newResult, size)
+    }
+    return permutations
 }

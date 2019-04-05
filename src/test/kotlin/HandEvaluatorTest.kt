@@ -172,6 +172,12 @@ internal class HandEvaluatorTest {
         assertThat(determinedHand, equalTo(High))
     }
 
+    @Test
+    fun shouldDetermineThatHandIsFourOfAKindAndReturnJackValueAddedToValueOfFourOfAKind() {
+        val handValue = HandEvaluator.getValueOfHand(fourOfAKindHand())
+        assertThat(handValue, equalTo(JACK_VALUE + FourOfAKind.value))
+
+    }
 
     private fun royalFlushHand(): List<Card> {
         return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))
