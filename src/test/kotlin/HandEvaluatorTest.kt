@@ -179,6 +179,7 @@ internal class HandEvaluatorTest {
 
     }
 
+
     private fun royalFlushHand(): List<Card> {
         return listOf(Ace(Spade), King(Spade), Queen(Spade), Jack(Spade), Ten(Spade))
 

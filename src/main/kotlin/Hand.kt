@@ -20,9 +20,9 @@ fun List<Card>.generatePermutations(
         return setOf(result.toSet())
     }
     val permutations: MutableSet<Set<Card>> = mutableSetOf()
+    val newRemainingCards = remainingCards.toMutableList()
     for (card in remainingCards) {
         val newResult = result + card
-        val newRemainingCards = remainingCards.toMutableList()
         newRemainingCards.remove(card)
         permutations += generatePermutations(newRemainingCards, newResult, size)
     }

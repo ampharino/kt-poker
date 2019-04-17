@@ -110,6 +110,8 @@ object HandEvaluator {
     }
 }
 
+
+
 private fun isSequence(hand: List<Card>): Boolean {
     val cardSequence = hand.sortedByDescending { card -> card.value }.toMutableList()
     for (i in 1 until cardSequence.size - 1) {
