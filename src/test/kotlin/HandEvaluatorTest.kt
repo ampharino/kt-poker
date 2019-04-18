@@ -89,84 +89,84 @@ internal class HandEvaluatorTest {
     }
 
     @Test
-    fun shouldReturnRoyalFlushEnumWhenHandIsRoyalFlush(){
+    fun shouldReturnRoyalFlushEnumWhenHandIsRoyalFlush() {
         val hand = royalFlushHand()
-        val determinedHand:Hand = HandEvaluator.determineHand(hand)
+        val determinedHand: Hand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(RoyalFlush))
     }
 
     @Test
-    fun shouldReturnStraightFlushEnumWhenHandIsStraightFlush(){
+    fun shouldReturnStraightFlushEnumWhenHandIsStraightFlush() {
         val hand = straightFlushHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(StraightFlush))
     }
 
     @Test
-    fun shouldReturnFourOfAKindEnumWhenHandIsFourOfAKind(){
+    fun shouldReturnFourOfAKindEnumWhenHandIsFourOfAKind() {
         val hand = fourOfAKindHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(FourOfAKind))
     }
 
     @Test
-    fun shouldReturnFullHouseEnumWhenHandIsFullHouse(){
+    fun shouldReturnFullHouseEnumWhenHandIsFullHouse() {
         val hand = fullHouseHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(FullHouse))
     }
 
     @Test
-    fun shouldReturnFlushEnumWhenHandIsFlush(){
+    fun shouldReturnFlushEnumWhenHandIsFlush() {
         val hand = flushHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(Flush))
     }
 
     @Test
-    fun shouldReturnStraightEnumWhenHighStraightHand(){
+    fun shouldReturnStraightEnumWhenHighStraightHand() {
         val hand = highStraightHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(Straight))
     }
 
     @Test
-    fun shouldReturnStraightEnumWhenLowStraightHand(){
+    fun shouldReturnStraightEnumWhenLowStraightHand() {
         val hand = lowStraightHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(Straight))
     }
 
     @Test
-    fun shouldReturnStraightEnumWhenStraightHand(){
+    fun shouldReturnStraightEnumWhenStraightHand() {
         val hand = straightHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(Straight))
     }
 
     @Test
-    fun shouldReturnThreeOfAKindEnumWhenThreeOfAKindHand(){
+    fun shouldReturnThreeOfAKindEnumWhenThreeOfAKindHand() {
         val hand = threeOfAKindHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(ThreeOfAKind))
     }
 
     @Test
-    fun shouldReturnTwoPairEnumWhenTwoPairHand(){
+    fun shouldReturnTwoPairEnumWhenTwoPairHand() {
         val hand = twoPairHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(TwoPair))
     }
 
     @Test
-    fun shouldReturnPairEnumWhenPairHand(){
+    fun shouldReturnPairEnumWhenPairHand() {
         val hand = pairHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(Pair))
     }
 
     @Test
-    fun shouldReturnHighEnumWhenNotAnyOtherHand(){
+    fun shouldReturnHighEnumWhenNotAnyOtherHand() {
         val hand = highestCardHand()
         val determinedHand = HandEvaluator.determineHand(hand)
         assertThat(determinedHand, equalTo(High))

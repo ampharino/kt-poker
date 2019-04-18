@@ -70,4 +70,12 @@ internal class CardPileTest {
         assertThat(startingCards.size, equalTo(2))
         assertThat(cardPile!!.size(), equalTo(50))
     }
+
+    @Test
+    fun drawCardShouldRemoveAndReturnACard() {
+        val card = cardPile!!.drawCard()
+        assertThat(card.size, equalTo(1))
+        assertThat(cardPile!!.size(), equalTo(51))
+
+    }
 }

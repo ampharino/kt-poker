@@ -15,6 +15,10 @@ class CardPile {
         return cards.removeRandomItems(2)
     }
 
+    fun drawCard(): List<Card>{
+        return cards.removeRandomItems(1)
+    }
+
     fun size(): Int {
         return cards.size
     }
