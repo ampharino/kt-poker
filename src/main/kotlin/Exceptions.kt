@@ -1,0 +1,1 @@
+class NotEnoughBalanceException(message: String) : Exception(message)

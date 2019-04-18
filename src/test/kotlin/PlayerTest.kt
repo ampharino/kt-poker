@@ -39,5 +39,10 @@ internal class PlayerTest {
         assertThat(pot, equalTo(50))
         assertThat(player!!.balance, equalTo(50))
     }
+
+    @Test(expected = NotEnoughBalanceException::class)
+    internal fun raisingShouldReturnErrorWhenBetIsHigherThanBalance(){
+        player!!.raise(200)
+    }
 }
 

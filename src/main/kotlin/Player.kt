@@ -1,4 +1,4 @@
-class Player(val name: String, val drawPile: CardPile, var balance:Int) {
+class Player(val name: String, val drawPile: CardPile, var balance: Int) {
     val cards: MutableList<Card> = ArrayList()
 
     init {
@@ -10,7 +10,8 @@ class Player(val name: String, val drawPile: CardPile, var balance:Int) {
     }
 
     fun raise(amount: Int): Int {
-        balance-=amount
+        if (amount > balance) throw(NotEnoughBalanceException("Bet amount is more than balance!"))
+        balance -= amount
         return amount
     }
 
